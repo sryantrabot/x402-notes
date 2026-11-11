@@ -9,7 +9,8 @@ project. If a page is wrong or out of date, please open an issue.
 
 ## Pages
 
-None yet.
+- [CDP facilitator: "input does not contain the discriminator property \"type\"" on an exact EVM payment](cdp-discriminator-property-type.md)
+  — the field it asks for does not exist on the exact scheme; a bare hex `nonce` produces that message.
 
 ## License
 
