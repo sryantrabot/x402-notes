@@ -11,6 +11,9 @@ project. If a page is wrong or out of date, please open an issue.
 
 - [CDP facilitator: "input does not contain the discriminator property \"type\"" on an exact EVM (EIP-3009) payment](cdp-discriminator-property-type.md)
   — the field it asks for does not exist on the exact scheme; a nonce without its `0x` prefix is the likely cause.
+- [Browser client gets a 402 but `PAYMENT-REQUIRED` is null](browser-cannot-read-payment-required.md)
+  — CORS: expose `PAYMENT-REQUIRED` and `PAYMENT-RESPONSE`, allow `PAYMENT-SIGNATURE` in the preflight, and put the
+  CORS layer outside the payment middleware.
 
 ## License
 
