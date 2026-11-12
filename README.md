@@ -17,6 +17,9 @@ project. If a page is wrong or out of date, please open an issue.
 - [Browser client gets a 402 but `PAYMENT-REQUIRED` is null](browser-cannot-read-payment-required.md)
   — CORS: expose `PAYMENT-REQUIRED` and `PAYMENT-RESPONSE`, allow `PAYMENT-SIGNATURE` in the preflight, and put the
   CORS layer outside the payment middleware.
+- [Polymarket: "not enough balance / allowance … spender: 0xd91E80…, allowance: 0" on a neg-risk order](polymarket-neg-risk-adapter-allowance.md)
+  — approving `NegRiskCtfCollateralAdapter` does not grant the Neg Risk Adapter; the CLOB still checks pUSD allowance
+  and Conditional Tokens approval to `0xd91E80…` itself.
 
 ## License
 
