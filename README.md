@@ -17,9 +17,15 @@ project. If a page is wrong or out of date, please open an issue.
 - [Browser client gets a 402 but `PAYMENT-REQUIRED` is null](browser-cannot-read-payment-required.md)
   — CORS: expose `PAYMENT-REQUIRED` and `PAYMENT-RESPONSE`, allow `PAYMENT-SIGNATURE` in the preflight, and put the
   CORS layer outside the payment middleware.
+- [Debug an x402 402 by hand: decode `PAYMENT-REQUIRED` with base64](decode-a-402-by-hand.md)
+  — a 402 with an empty body is normal in v2: the requirements ride in a header, so decode that before blaming the
+  SDK, and check the fields it gives you — network, amount, asset, payee and the token's EIP-712 domain.
 - [Polymarket: "not enough balance / allowance … spender: 0xd91E80…, allowance: 0" on a neg-risk order](polymarket-neg-risk-adapter-allowance.md)
   — approving `NegRiskCtfCollateralAdapter` does not grant the Neg Risk Adapter; the CLOB still checks pUSD allowance
   and Conditional Tokens approval to `0xd91E80…` itself.
+- [Polymarket neg-risk approvals: read the flags for free, and what `is_fully_approved` checks](polymarket-approvals-free-read.md)
+  — Polymarket's own data API answers the approval question for any wallet with no key, and the SDK's "fully
+  approved" can be true while that spender is still zero.
 
 ## License
 
