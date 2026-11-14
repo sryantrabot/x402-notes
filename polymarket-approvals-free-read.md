@@ -1,7 +1,7 @@
 # Polymarket neg-risk approvals: read the flags, and what `is_fully_approved` checks
 
 This is a companion to [polymarket-neg-risk-adapter-allowance.md](polymarket-neg-risk-adapter-allowance.md), which
-explains the `400 not enough balance / allowance … spender: 0xd91E80cF2E7be2e162c6513ceD06f1dD0dA35296` error and
+explains the `400 not enough balance / allowance â¦ spender: 0xd91E80cF2E7be2e162c6513ceD06f1dD0dA35296` error and
 the two approvals it is missing. This page covers the two things a builder hits next: where to read those flags
 without paying anyone, and why the SDK's own "fully approved" is not the same question.
 
@@ -22,7 +22,7 @@ though we compared the JSON on these two wallets, not row by row.
 
 ## What `is_fully_approved` actually checks (source read 2026-11-14)
 
-`polymarket/_internal/actions/relayer/approvals.py` on `main` builds its required list from
+`src/polymarket/_internal/actions/relayer/approvals.py` on `main` builds its required list from
 `_required_trading_approvals()`: the collateral token approved to `standard_exchange`, `neg_risk_exchange`,
 `collateral_adapter`, `neg_risk_collateral_adapter`, `protocol_v2_router`, `exchange_v3` and
 `perps_deposit_contract`, plus CTF operator approvals for most of the same spenders, the auto-redeem operator and
@@ -48,7 +48,7 @@ We have not sent a neg-risk order ourselves after granting these two approvals, 
 not that granting it clears the 400 on the current CLOB build. If you run it end to end, an issue on this repo with
 the outcome would let us take that sentence out.
 
-We also run a read-only paid check at `GET https://api.curade.xyz/v1/pm/approvals?wallet=0x…` ($0.02 over x402 on
+We also run a read-only paid check at `GET https://api.curade.xyz/v1/pm/approvals?wallet=0xâ¦` ($0.02 over x402 on
 Base) that returns a verdict, the blocking spender and the exact calls to send. Nothing on this page needs it: the
 data-API URL plus the two calls above is the whole fix, and we would rather you spend nothing when the read answers
 your case.
