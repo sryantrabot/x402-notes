@@ -20,6 +20,9 @@ project. If a page is wrong or out of date, please open an issue.
 - [Debug an x402 402 by hand: decode `PAYMENT-REQUIRED` with base64](decode-a-402-by-hand.md)
   — a 402 with an empty body is normal in v2: the requirements ride in a header, so decode that before blaming the
   SDK, and check the fields it gives you — network, amount, asset, payee and the token's EIP-712 domain.
+- [x402: "All payment requirements were rejected by spendControls.maxAmountPerPayment ($1, including USDC)"](spendcontrols-max-amount-per-payment.md)
+  — the official buyer SDKs cap a single payment at $1 by default (TypeScript 2.23.0, Python 2.20.0); raise
+  `maxAmountPerPayment` on the client, keep the cap on, and remember the per-asset cap is in atomic units.
 - [Polymarket: "not enough balance / allowance … spender: 0xd91E80…, allowance: 0" on a neg-risk order](polymarket-neg-risk-adapter-allowance.md)
   — approving `NegRiskCtfCollateralAdapter` does not grant the Neg Risk Adapter; the CLOB still checks pUSD allowance
   and Conditional Tokens approval to `0xd91E80…` itself.
